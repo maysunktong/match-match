@@ -2,33 +2,46 @@
 
 import { useState } from "react";
 import { CookiesMenu } from "../menu";
-import { filterCookiesByGlutenFree } from "../filters";
+import { filterCookiesByGlutenFree, filterCookiesByPrice } from "../filters";
+import { FilterPill } from "../components/FilterPill";
 
 export default function Card() {
   const [showGlutenFree, setShowGlutenFree] = useState(false);
 
+  const [sortDecending, setSortDecending] = useState(false)
+
   let cookiesToDisplay = showGlutenFree
     ? filterCookiesByGlutenFree(CookiesMenu, true)
     : CookiesMenu;
+    cookiesToDisplay = filterCookiesByPrice(cookiesToDisplay, sortDecending);
 
   return (
-    <div>
-      <button
-        className="px-4 py-2 mb-4 text-sm font-semibold text-white bg-green-500 rounded-lg focus:outline-none hover:bg-green-600"
-        onClick={() => setShowGlutenFree(!showGlutenFree)}
-      >
-        {showGlutenFree ? "Show All" : "Gluten Free"}
-      </button>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="p-12">
+      <div className="flex justify-center items-center">
+        <div className="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-2 flex-row-reverse">
+        <FilterPill
+          onClick={() => setShowGlutenFree(!showGlutenFree)}
+        >
+          {showGlutenFree ? "Show All" : "Gluten Free"}
+        </FilterPill>
+        <FilterPill
+        onClick={() => setSortDecending(!sortDecending)}
+            >
+        {sortDecending ? "Sort Ascending" : "Sort Descending"}
+            </FilterPill></div>
+      </div>
+     
+
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4">
         {cookiesToDisplay.map((item, index) => {
           return (
-            <div key={index} className="p-4 bg-white rounded-lg border relative">
+            <div key={index} className="p-4 bg-white rounded-lg relative">
               {item["gluten-free"] && (
-                <p className="absolute top-2 right-2 text-xs bg-green-500 text-white px-2 py-1 rounded-md">
+                <p className="absolute top-8 right-2 text-xs border text-gray-400 px-2 py-1 rounded-xl">
                   Gluten Free
                 </p>
               )}
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center p-8">
                 <img className="w-48" src={item.image} alt={item.name} />
               </div>
               <h1 className="text-lg font-semibold">{item.name}</h1>

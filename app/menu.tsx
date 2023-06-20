@@ -34,7 +34,7 @@ export const CookiesMenu: Cookies[] = [
   {
     name: "Matcha Cookies with Chocolate Chips",
     price: 65,
-    "gluten-free": false,
+    "gluten-free": true,
     image: 'https://res.cloudinary.com/maysunktong/image/upload/v1687283486/cookie_matcha_choc_cpemtd.svg'
   },
   {
@@ -46,13 +46,13 @@ export const CookiesMenu: Cookies[] = [
   {
     name: "Matcha Cookies with Caramel Bits",
     price: 65,
-    "gluten-free": false,
+    "gluten-free": true,
     image: 'https://res.cloudinary.com/maysunktong/image/upload/v1687283340/Cookie-bag-matcha-caramel_qlss1e.svg'
   },
   {
     name: "Sakura Cookies",
     price: 45,
-    "gluten-free": false,
+    "gluten-free": true,
     image: 'https://res.cloudinary.com/maysunktong/image/upload/v1687283190/sakua_ivzezy.svg'
   },
   {
@@ -74,6 +74,7 @@ export const CookiesMenu: Cookies[] = [
     image: 'https://res.cloudinary.com/maysunktong/image/upload/v1687283504/coffee_cjkalz.svg'
   }
 ];
+
 export const ColdLatteMenu: ColdLatte[] = [
   {
     name: "Matcha Cold Whisk Latte",

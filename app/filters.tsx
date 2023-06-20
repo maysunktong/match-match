@@ -5,6 +5,18 @@ export function filterCookiesByGlutenFree(cookies: Cookies[], glutenFree: boolea
   return cookies.filter(cookie => cookie['gluten-free'] === glutenFree);
 }
 
+// filter cookies price ascending and decending
+export function filterCookiesByPrice(cookies: Cookies[], decending: boolean) {
+  return cookies.sort((a, b) => {
+    if (decending) {
+      return b.price - a.price;
+    } else {
+      return a.price - b.price;
+    }
+  }
+  );
+}
+
 export function filterLattesByOrigin(lattes: ColdLatte[], origin: string) {
   return lattes.filter(latte => latte.origin === origin);
 }
