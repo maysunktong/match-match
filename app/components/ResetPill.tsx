@@ -5,7 +5,7 @@ type FilterButtonProps = {
   onClick: () => void;
 };
 
-export const FilterPill = ({ children, onClick }: FilterButtonProps) => {
+export const ResetPill = ({ children, onClick }: FilterButtonProps) => {
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -16,7 +16,7 @@ export const FilterPill = ({ children, onClick }: FilterButtonProps) => {
   return (
     <button
       onClick={handleClick}
-      className={`w-[8rem] text-xs p-2 rounded-3xl ${isActive ? 'bg-[#73a942] opacity-90 text-white border' : 'border text-gray-400'}`}
+      className="text-gray-400 text-xs"
     >
       {children}
     </button>
