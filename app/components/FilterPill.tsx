@@ -1,12 +1,18 @@
-import{ useState } from 'react';
+// FilterPill.js
+import { useEffect, useState } from 'react';
 
 type FilterButtonProps = {
   children: React.ReactNode;
   onClick: () => void;
+  isActive: boolean;
 };
 
-export const FilterPill = ({ children, onClick }: FilterButtonProps) => {
-  const [isActive, setIsActive] = useState(false);
+export const FilterPill = ({ children, onClick, isActive: isActiveProp }: FilterButtonProps) => {
+  const [isActive, setIsActive] = useState(isActiveProp);
+
+  useEffect(() => {
+    setIsActive(isActiveProp);
+  }, [isActiveProp]);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     onClick(e);
@@ -16,7 +22,7 @@ export const FilterPill = ({ children, onClick }: FilterButtonProps) => {
   return (
     <button
       onClick={handleClick}
-      className={`w-[8rem] text-xs p-2 rounded-3xl ${isActive ? 'bg-[#73a942] opacity-90 text-white border' : 'border text-gray-400'}`}
+      className={`text-xs w-[8rem] px-2 py-1 rounded-xl ${isActive ? 'bg-[#38b000] text-white border' : 'border text-gray-400'}`}
     >
       {children}
     </button>
