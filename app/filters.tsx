@@ -17,9 +17,9 @@ export function filterCookiesByPrice(cookies: Cookies[], decending: boolean) {
   );
 }
 
-export function filterColdWhiskByPrice(coldwhisk: ColdWhisk[], decending: boolean) {
+export function filterColdWhiskByPrice(coldwhisk: ColdWhisk[], descending: boolean) {
   return coldwhisk.sort((a, b) => {
-    if (decending) {
+    if (descending) {
       return b.price - a.price;
     } else {
       return a.price - b.price;

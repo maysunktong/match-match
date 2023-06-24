@@ -7,8 +7,8 @@ type ResetButtonProps = {
 };
 
 export const ResetPill = ({ children, onClick }: ResetButtonProps) => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    onClick(e);
+  const handleClick = () => {
+    onClick();
   };
 
   return (

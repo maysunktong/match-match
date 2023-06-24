@@ -1,34 +1,43 @@
 "use client";
 
-import { useState } from "react";
-import { ColdWhiskMenu, CookiesMenu } from "../menu";
-import { filterColdWhiskByAlmondMilk, filterColdWhiskByMilk, filterColdWhiskByPrice, filterColdWhiskBySoyMilk, filterCookiesByGlutenFree, filterCookiesByPrice } from "../filters";
-import { FilterPill } from "../components/FilterPill";
-import { ResetPill } from "../components/ResetPill";
+import { useState } from 'react';
+import { ColdWhiskMenu, CookiesMenu } from '../menu';
+import {
+  filterColdWhiskByAlmondMilk,
+  filterColdWhiskByMilk,
+  filterColdWhiskByPrice,
+  filterColdWhiskBySoyMilk,
+  filterCookiesByGlutenFree,
+  filterCookiesByPrice,
+} from '../filters';
+import { FilterPill } from '../components/FilterPill';
+import { ResetPill } from '../components/ResetPill';
 
 export default function MatchaColdWhisk() {
   const [showMilk, setShowMilk] = useState(false);
   const [showSoyMilk, setShowSoyMilk] = useState(false);
   const [showAlmondMilk, setShowAlmondMilk] = useState(false);
-  const [sortDecending, setSortDecending] = useState(false);
+  const [sortDescending, setSortDescending] = useState(false);
 
   const resetFilters = () => {
     setShowMilk(false);
     setShowSoyMilk(false);
     setShowAlmondMilk(false);
-    setSortDecending(false);
+    setSortDescending(false);
   };
 
-  let coldwhiskToDisplay = showMilk
-    ? filterColdWhiskByMilk(ColdWhiskMenu, true)
-    : ColdWhiskMenu;
-  coldwhiskToDisplay = showSoyMilk
-    ? filterColdWhiskBySoyMilk(coldwhiskToDisplay, true)
-    : coldwhiskToDisplay;
-  coldwhiskToDisplay = showAlmondMilk
-    ? filterColdWhiskByAlmondMilk(coldwhiskToDisplay, true)
-    : coldwhiskToDisplay;
-  coldwhiskToDisplay = filterColdWhiskByPrice(coldwhiskToDisplay, sortDecending);
+  let coldWhiskToDisplay = ColdWhiskMenu;
+  if (showMilk) {
+    coldWhiskToDisplay = filterColdWhiskByMilk(coldWhiskToDisplay, true);
+  }
+  if (showSoyMilk) {
+    coldWhiskToDisplay = filterColdWhiskBySoyMilk(coldWhiskToDisplay, true);
+  }
+  if (showAlmondMilk) {
+    coldWhiskToDisplay = filterColdWhiskByAlmondMilk(coldWhiskToDisplay, true);
+  }
+  coldWhiskToDisplay = filterColdWhiskByPrice(coldWhiskToDisplay, sortDescending);
+
 
   return (
     <div className="p-12">
@@ -53,17 +62,17 @@ export default function MatchaColdWhisk() {
             Almond Milk
           </FilterPill>
           <FilterPill
-            onClick={() => setSortDecending(!sortDecending)}
-            isActive={sortDecending}
+            onClick={() => setSortDescending(!sortDescending)}
+            isActive={sortDescending}
           >
-            {sortDecending ? "Sort Ascending" : "Sort Descending"}
+            {sortDescending ? "Sort Ascending" : "Sort Descending"}
           </FilterPill>
           <ResetPill onClick={resetFilters}>Reset</ResetPill>
         </div>
       </div>
 
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4">
-        {coldwhiskToDisplay.map((item, index) => {
+        {coldWhiskToDisplay.map((item, index) => {
           return (
             <div key={index} className="p-4 bg-white rounded-lg relative">
               {item["gluten-free"] && (

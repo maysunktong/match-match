@@ -9,17 +9,17 @@ import { LabelTopRight } from "../components/LabelTopRightPill";
 
 export default function Cookies() {
   const [showGlutenFree, setShowGlutenFree] = useState(false);
-  const [sortDecending, setSortDecending] = useState(false);
+  const [sortDescending, setSortDescending] = useState(false);
 
   const resetFilters = () => {
     setShowGlutenFree(false);
-    setSortDecending(false);
+    setSortDescending(false);
   };
 
   let cookiesToDisplay = showGlutenFree
     ? filterCookiesByGlutenFree(CookiesMenu, true)
     : CookiesMenu;
-  cookiesToDisplay = filterCookiesByPrice(cookiesToDisplay, sortDecending);
+  cookiesToDisplay = filterCookiesByPrice(cookiesToDisplay, sortDescending);
 
   return (
     <div className="p-12">
@@ -32,10 +32,10 @@ export default function Cookies() {
             Gluten Free
           </FilterPill>
           <FilterPill
-            onClick={() => setSortDecending(!sortDecending)}
-            isActive={sortDecending}
+            onClick={() => setSortDescending(!sortDescending)}
+            isActive={sortDescending}
           >
-            {sortDecending ? "Sort Ascending" : "Sort Descending"}
+            {sortDescending ? "Sort Ascending" : "Sort Descending"}
           </FilterPill>
           <ResetPill onClick={resetFilters}>Reset</ResetPill>
         </div>
