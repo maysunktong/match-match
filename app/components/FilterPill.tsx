@@ -14,8 +14,8 @@ export const FilterPill = ({ children, onClick, isActive: isActiveProp }: Filter
     setIsActive(isActiveProp);
   }, [isActiveProp]);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    onClick(e);
+  const handleClick = () => {
+    onClick();
     setIsActive(!isActive);
   };
 
