@@ -5,6 +5,7 @@ import { CookiesMenu } from "../menu";
 import { filterCookiesByGlutenFree, filterCookiesByPrice } from "../filters";
 import { FilterPill } from "../components/FilterPill";
 import { ResetPill } from "../components/ResetPill";
+import { LabelTopRight } from "../components/LabelTopRightPill";
 
 export default function Cookies() {
   const [showGlutenFree, setShowGlutenFree] = useState(false);
@@ -23,14 +24,14 @@ export default function Cookies() {
   return (
     <div className="p-12">
       <div className="flex justify-center items-center">
-        <div className="grid gap-6 grid-cols-3">
-        <FilterPill 
+        <div className="grid gap-4 grid-cols-3">
+          <FilterPill
             onClick={() => setShowGlutenFree(!showGlutenFree)}
             isActive={showGlutenFree}
           >
-            {showGlutenFree ? "Show All" : "Gluten Free"}
+            Gluten Free
           </FilterPill>
-          <FilterPill 
+          <FilterPill
             onClick={() => setSortDecending(!sortDecending)}
             isActive={sortDecending}
           >
@@ -45,9 +46,7 @@ export default function Cookies() {
           return (
             <div key={index} className="p-4 bg-white rounded-lg relative">
               {item["gluten-free"] && (
-                <p className="absolute top-8 right-2 text-xs text-gray-400 border px-2 py-1  rounded-xl">
-                  Gluten Free
-                </p>
+                <LabelTopRight>Gluten free</LabelTopRight>
               )}
               <div className="flex justify-center items-center p-8">
                 <img className="w-48" src={item.image} alt={item.name} />

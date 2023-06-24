@@ -5,17 +5,20 @@ export interface Cookies {
   image?: string;
 }
 
-export interface ColdLatte {
+type ColdWhiskLiquidType = 'Lactose-Free' | 'Soy' | 'Almond';
+
+export interface ColdWhisk {
   name: string;
   price: number;
   origin: string;
-  types_of_liquids: string[];
+  types_of_liquids: ColdWhiskLiquidType[]
+  image?: string;
 }
 
 export interface FlavoredMatcha {
   name: string;
   price: number;
-  breed: string;
+  origin: string;
   quality: {
     ceremonial_grade: boolean;
     culinary_grade: boolean;
@@ -26,9 +29,6 @@ export interface SodaCan {
   name: string;
   price: number;
 }
-
-
-
 
 export const CookiesMenu: Cookies[] = [
   {
@@ -75,25 +75,28 @@ export const CookiesMenu: Cookies[] = [
   }
 ];
 
-export const ColdLatteMenu: ColdLatte[] = [
+export const ColdWhiskMenu: ColdWhisk[] = [
   {
     name: "Matcha Cold Whisk Latte",
     price: 65,
     origin: "Japan",
-    types_of_liquids: ["Lactose-free", "Soy", "Almond"],
+    types_of_liquids: ["Lactose-Free"],
+    image: "https://res.cloudinary.com/maysunktong/image/upload/v1687479729/Cups_gftt01.svg"
 
   },
   {
     name: "Chai Latte",
-    price: 65,
+    price: 49,
     origin: "India",
-    types_of_liquids: ["Lactose-free", "Soy", "Almond"],
+    types_of_liquids: ["Lactose-Free", "Soy", "Almond"],
+    image: "https://res.cloudinary.com/maysunktong/image/upload/v1687479729/Group_16_ngksg9.svg"
   },
   {
     name: "Local Brew Latte",
-    price: 65,
+    price: 59,
     origin: "Thailand",
-    types_of_liquids: ["Lactose-free", "Soy", "Almond"]
+    types_of_liquids: ["Lactose-Free", "Soy", "Almond"],
+    image: "https://res.cloudinary.com/maysunktong/image/upload/v1687479729/Group_15_liw40o.svg"
   },
 ];
 
@@ -102,7 +105,7 @@ export const FlavoredMatchaMenu: FlavoredMatcha[] = [
   {
     name: "Matcha with Coconut Water",
     price: 65,
-    breed: "Samidori",
+    origin: "Samidori",
     quality: {
       ceremonial_grade: true,
       culinary_grade: false,
@@ -111,7 +114,7 @@ export const FlavoredMatchaMenu: FlavoredMatcha[] = [
   {
     name: "Matcha Soda with Lavender Syrup",
     price: 65,
-    breed: "Uji",
+    origin: "Uji",
     quality: {
       ceremonial_grade: true,
       culinary_grade: false,
@@ -120,7 +123,7 @@ export const FlavoredMatchaMenu: FlavoredMatcha[] = [
   {
     name: "Matcha Soda with Rose Syrup",
     price: 65,
-    breed: "Yama",
+    origin: "Yama",
     quality: {
       ceremonial_grade: true,
       culinary_grade: true,
@@ -129,7 +132,7 @@ export const FlavoredMatchaMenu: FlavoredMatcha[] = [
   {
     name: "Matcha Soda with Peach Syrup",
     price: 65,
-    breed: "Hikari",
+    origin: "Hikari",
     quality: {
       ceremonial_grade: false,
       culinary_grade: true,
@@ -138,7 +141,7 @@ export const FlavoredMatchaMenu: FlavoredMatcha[] = [
   {
     name: "Matcha Soda with Strawberry Syrup",
     price: 65,
-    breed: "Kaori",
+    origin: "Kaori",
     quality: {
       ceremonial_grade: false,
       culinary_grade: true,
@@ -147,7 +150,7 @@ export const FlavoredMatchaMenu: FlavoredMatcha[] = [
   {
     name: "Matcha Soda with Lemon Flavor",
     price: 65,
-    breed: "Kaori",
+    origin: "Kaori",
     quality: {
       ceremonial_grade: false,
       culinary_grade: true,

@@ -22,7 +22,7 @@ export const FilterPill = ({ children, onClick, isActive: isActiveProp }: Filter
   return (
     <button
       onClick={handleClick}
-      className={`text-xs w-[8rem] px-2 py-1 rounded-xl ${isActive ? 'bg-[#38b000] text-white border' : 'border text-gray-400'}`}
+      className={`text-xs text-gray-400 w-[8rem] p-2 rounded-3xl ${isActive ? 'bg-[#38b000] text-white border' : 'border'}`}
     >
       {children}
     </button>
