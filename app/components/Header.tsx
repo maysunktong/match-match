@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <div className="flex justify-between py-4 sticky top-0 z-50 bg-white">
       <div>
-        <Link href="/home"> <img src="https://res.cloudinary.com/maysunktong/image/upload/v1687296535/Minimalist_Word_Mark_Badge_Typographic_Logo_bufywe.png" alt="matcha logo" className='w-20' /></Link>
+        <Link href="/"> <img src="https://res.cloudinary.com/maysunktong/image/upload/v1687296535/Minimalist_Word_Mark_Badge_Typographic_Logo_bufywe.png" alt="matcha logo" className='w-20' /></Link>
        
       </div>
       <ul className="flex justify-between items-center space-x-6  text-green-600">

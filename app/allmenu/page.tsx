@@ -11,7 +11,7 @@ let matchaFruityToDisplay = FlavoredMatchaMenu;
 let sodaToDisplay = SodaCanMenu;
 let cookiesToDisplay = CookiesMenu;
 
-export default function Home() {
+export default function AllMenu() {
   return (
     <div>
       <div className="bg-green-800 h-[20rem]">Banner</div>
