@@ -14,7 +14,7 @@ let cookiesToDisplay = CookiesMenu;
 export default function AllMenu() {
   return (
     <div>
-      <div className="bg-green-800 h-[20rem]">Banner</div>
+      <div className="bg-green-800 h-[20rem] flex justify-center items-center uppercase text-6xl text-white">Banner</div>
       <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-4">
         
         {coldWhiskToDisplay.map((item, index) => {
