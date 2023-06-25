@@ -7,8 +7,7 @@ import {
   filterColdWhiskByMilk,
   filterColdWhiskByPrice,
   filterColdWhiskBySoyMilk,
-  filterCookiesByGlutenFree,
-  filterCookiesByPrice,
+  filterColdWhiskByTrio
 } from '../filters';
 import { FilterPill } from '../components/FilterPill';
 import { ResetPill } from '../components/ResetPill';
@@ -17,12 +16,14 @@ export default function MatchaColdWhisk() {
   const [showMilk, setShowMilk] = useState(false);
   const [showSoyMilk, setShowSoyMilk] = useState(false);
   const [showAlmondMilk, setShowAlmondMilk] = useState(false);
+  const [showTrio, setShowTrio] = useState(false);
   const [sortDescending, setSortDescending] = useState(false);
 
   const resetFilters = () => {
     setShowMilk(false);
     setShowSoyMilk(false);
     setShowAlmondMilk(false);
+    setShowTrio(false);
     setSortDescending(false);
   };
 
@@ -36,13 +37,16 @@ export default function MatchaColdWhisk() {
   if (showAlmondMilk) {
     coldWhiskToDisplay = filterColdWhiskByAlmondMilk(coldWhiskToDisplay, true);
   }
+  if (showTrio) {
+    coldWhiskToDisplay = filterColdWhiskByTrio(coldWhiskToDisplay, true);
+  }
   coldWhiskToDisplay = filterColdWhiskByPrice(coldWhiskToDisplay, sortDescending);
 
 
   return (
     <div className="p-12">
       <div className="flex justify-center items-center">
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-5">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-6">
           <FilterPill
             onClick={() => setShowMilk(!showMilk)}
             isActive={showMilk}
@@ -60,6 +64,12 @@ export default function MatchaColdWhisk() {
             isActive={showAlmondMilk}
           >
             Almond Milk
+          </FilterPill>
+          <FilterPill
+            onClick={() => setShowTrio(!showTrio)}
+            isActive={showTrio}
+          >
+            Trio
           </FilterPill>
           <FilterPill
             onClick={() => setSortDescending(!sortDescending)}
